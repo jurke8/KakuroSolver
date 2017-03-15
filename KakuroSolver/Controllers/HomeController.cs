@@ -1,5 +1,8 @@
-﻿using System;
+﻿using KakuroSolver.Helpers;
+using KakuroSolver.Models;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -11,21 +14,25 @@ namespace KakuroSolver.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new MyViewModel();
+            return View(model);
         }
-
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(MyViewModel model)
         {
-            ViewBag.Message = "Your application description page.";
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Bitmap originalImage = new Bitmap(model.File.InputStream);
 
-            return View();
-        }
+            var ph = new PictureHelper();
+            var cells = ph.ReadFromImage(originalImage, 5, 5);
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            // now you could pass the byte array to your model and store wherever 
+            // you intended to store it
 
-            return View();
+            return View(model);
         }
         public ActionResult ChangeLanguage(string language, string returnUrl)
         {
