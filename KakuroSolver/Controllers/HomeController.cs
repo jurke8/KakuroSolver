@@ -14,11 +14,11 @@ namespace KakuroSolver.Controllers
     {
         public ActionResult Index()
         {
-            var model = new MyViewModel();
+            var model = new KakuroViewModel();
             return View(model);
         }
         [HttpPost]
-        public ActionResult Index(MyViewModel model)
+        public ActionResult Index(KakuroViewModel model)
         {
             if (!ModelState.IsValid)
             {

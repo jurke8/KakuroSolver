@@ -123,10 +123,25 @@
   <data name="Author" xml:space="preserve">
     <value>Ivan Jurić</value>
   </data>
+  <data name="File" xml:space="preserve">
+    <value>File:</value>
+  </data>
   <data name="Language_label" xml:space="preserve">
     <value>EN</value>
   </data>
   <data name="Language_short" xml:space="preserve">
     <value>hr-HR</value>
+  </data>
+  <data name="Load" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="NumberOfColumns" xml:space="preserve">
+    <value>Number of columns</value>
+  </data>
+  <data name="NumberOfRows" xml:space="preserve">
+    <value>Number of rows</value>
+  </data>
+  <data name="ValueOutOfRange" xml:space="preserve">
+    <value>Enter the number between 3 and 15</value>
   </data>
 </root>
