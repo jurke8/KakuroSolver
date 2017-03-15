@@ -172,8 +172,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\enflag.png" />
-    <Content Include="img\hrflag.png" />
+    <Content Include="img\EN.png" />
+    <Content Include="img\HR.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
