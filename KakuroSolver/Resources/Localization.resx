@@ -120,6 +120,9 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>Kakuro solver</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Ivan Jurić</value>
+  </data>
   <data name="Language_label" xml:space="preserve">
     <value>EN</value>
   </data>

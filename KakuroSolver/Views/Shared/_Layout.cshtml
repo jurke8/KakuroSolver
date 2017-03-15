@@ -32,9 +32,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav floatright">
                     @*
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li> *@
                     <li>@Html.ActionLink(" " , "ChangeLanguage", "Home", new { language = Resources.Localization.Language_short, returnUrl = this.Request.RawUrl }, new { @class = "language " + Resources.Localization.Language_label })</li>
 
                 </ul>
@@ -45,7 +43,7 @@
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year</p>
+                <p>&copy; @Resources.Localization.Author @DateTime.Now.Year</p>
             </footer>
         </div>
 
