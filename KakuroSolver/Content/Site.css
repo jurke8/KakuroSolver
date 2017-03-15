@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+a.language {
+    display: block;
+    width: 60px;
+    height: 30px;
+    text-indent: -9999px; /* hides the link text */
+    background-position: center;
+}
+a.language.EN {
+        background: url(../img/HR.png) no-repeat center;
+    }
+a.language.HR {
+        background: url(../img/EN.png) no-repeat center;
+    }
+ul.floatright {
+    float:right !important;
+    margin-top:7px !important;
+}
