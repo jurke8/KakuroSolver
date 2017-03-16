@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Combinations: .
+        /// </summary>
+        public static string Combinations {
+            get {
+                return ResourceManager.GetString("Combinations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Web application which helps in solving kakuro puzzles.
         /// </summary>
         public static string Description {
@@ -142,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of columns.
+        ///   Looks up a localized string similar to Columns: .
         /// </summary>
         public static string NumberOfColumns {
             get {
@@ -151,7 +160,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of rows.
+        ///   Looks up a localized string similar to Fields: .
+        /// </summary>
+        public static string NumberOfFields {
+            get {
+                return ResourceManager.GetString("NumberOfFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rows: .
         /// </summary>
         public static string NumberOfRows {
             get {
@@ -174,6 +192,15 @@ namespace Resources {
         public static string Statistics {
             get {
                 return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum: .
+        /// </summary>
+        public static string Sum {
+            get {
+                return ResourceManager.GetString("Sum", resourceCulture);
             }
         }
         

@@ -14,15 +14,26 @@ namespace KakuroSolver.Controllers
     {
         public ActionResult Index()
         {
-            var model = new KakuroViewModel();
-            return View(model);
+            @ViewBag.Position = "navigation";
+            return View("Index");
+        }
+        public ActionResult Solver()
+        {
+            @ViewBag.Position = "solver";
+            return View("Index");
+        }
+        public ActionResult Helper()
+        {
+            @ViewBag.Position = "helper";
+            return View("Index");
         }
         [HttpPost]
-        public ActionResult Index(KakuroViewModel model)
+        public ActionResult Solver(KakuroReadModel model)
         {
+            @ViewBag.Position = "solver";
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Index");
             }
             Bitmap originalImage = new Bitmap(model.File.InputStream);
 
@@ -32,7 +43,20 @@ namespace KakuroSolver.Controllers
             // now you could pass the byte array to your model and store wherever 
             // you intended to store it
 
-            return View(model);
+            return View("Index");
+        }
+        [HttpPost]
+        public ActionResult Helper(KakuroHelperModel model)
+        {
+            @ViewBag.Position = "helper";
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            // now you could pass the byte array to your model and store wherever 
+            // you intended to store it
+
+            return View("Index");
         }
         public ActionResult ChangeLanguage(string language, string returnUrl)
         {

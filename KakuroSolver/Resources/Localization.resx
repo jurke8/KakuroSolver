@@ -123,6 +123,9 @@
   <data name="Author" xml:space="preserve">
     <value>Ivan Jurić</value>
   </data>
+  <data name="Combinations" xml:space="preserve">
+    <value>Combinations: </value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Web application which helps in solving kakuro puzzles</value>
   </data>
@@ -145,16 +148,22 @@
     <value>MENU</value>
   </data>
   <data name="NumberOfColumns" xml:space="preserve">
-    <value>Number of columns</value>
+    <value>Columns: </value>
+  </data>
+  <data name="NumberOfFields" xml:space="preserve">
+    <value>Fields: </value>
   </data>
   <data name="NumberOfRows" xml:space="preserve">
-    <value>Number of rows</value>
+    <value>Rows: </value>
   </data>
   <data name="Solver" xml:space="preserve">
     <value>Solver</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum: </value>
   </data>
   <data name="ValueOutOfRange" xml:space="preserve">
     <value>Enter the number between 3 and 15</value>

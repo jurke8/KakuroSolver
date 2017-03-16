@@ -160,7 +160,8 @@
     <Compile Include="Helpers\Algorithm.cs" />
     <Compile Include="Helpers\PictureHelper.cs" />
     <Compile Include="Models\Cell.cs" />
-    <Compile Include="Models\KakuroViewModel.cs" />
+    <Compile Include="Models\KakuroHelperModel.cs" />
+    <Compile Include="Models\KakuroReadModel.cs" />
     <Compile Include="Models\PictureCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Localization.Designer.cs">
@@ -180,10 +181,6 @@
     <Content Include="css\grayscale.css" />
     <Content Include="css\grayscale.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="font-awesome\css\font-awesome.css" />
-    <Content Include="font-awesome\css\font-awesome.min.css" />
-    <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\downloads-bg.jpg" />
     <Content Include="img\EN.png" />
@@ -195,9 +192,6 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\grayscale.js" />
     <Content Include="js\grayscale.min.js" />
-    <Content Include="js\jquery-1.10.2.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -223,54 +217,12 @@
     <Content Include="x86\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="font-awesome\less\bordered-pulled.less" />
-    <Content Include="font-awesome\less\core.less" />
-    <Content Include="font-awesome\less\fixed-width.less" />
-    <Content Include="font-awesome\less\font-awesome.less" />
-    <Content Include="font-awesome\less\icons.less" />
-    <Content Include="font-awesome\less\larger.less" />
-    <Content Include="font-awesome\less\list.less" />
-    <Content Include="font-awesome\less\mixins.less" />
-    <Content Include="font-awesome\less\path.less" />
-    <Content Include="font-awesome\less\rotated-flipped.less" />
-    <Content Include="font-awesome\less\spinning.less" />
-    <Content Include="font-awesome\less\stacked.less" />
-    <Content Include="font-awesome\less\variables.less" />
-    <Content Include="font-awesome\scss\font-awesome.scss" />
-    <Content Include="font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="font-awesome\scss\_core.scss" />
-    <Content Include="font-awesome\scss\_fixed-width.scss" />
-    <Content Include="font-awesome\scss\_icons.scss" />
-    <Content Include="font-awesome\scss\_larger.scss" />
-    <Content Include="font-awesome\scss\_list.scss" />
-    <Content Include="font-awesome\scss\_mixins.scss" />
-    <Content Include="font-awesome\scss\_path.scss" />
-    <Content Include="font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="font-awesome\scss\_spinning.scss" />
-    <Content Include="font-awesome\scss\_stacked.scss" />
-    <Content Include="font-awesome\scss\_variables.scss" />
     <Content Include="less\grayscale.less" />
     <Content Include="sass\grayscale.scss" />
     <Content Include="sass\_mixins.scss" />
     <Content Include="sass\_variables.scss" />
     <Content Include="less\mixins.less" />
     <Content Include="less\variables.less" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,12 +297,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

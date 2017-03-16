@@ -123,6 +123,9 @@
   <data name="Author" xml:space="preserve">
     <value>Ivan Jurić</value>
   </data>
+  <data name="Combinations" xml:space="preserve">
+    <value>Kombinacije: </value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Web aplikacija koja pomaže u rješavanju kakuro zagonetki</value>
   </data>
@@ -145,16 +148,22 @@
     <value>Izbornik</value>
   </data>
   <data name="NumberOfColumns" xml:space="preserve">
-    <value>Broj stupaca</value>
+    <value>Stupci: </value>
+  </data>
+  <data name="NumberOfFields" xml:space="preserve">
+    <value>Broj polja: </value>
   </data>
   <data name="NumberOfRows" xml:space="preserve">
-    <value>Broj redova</value>
+    <value>Redci: </value>
   </data>
   <data name="Solver" xml:space="preserve">
     <value>Rješavač</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistika</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Zbroj: </value>
   </data>
   <data name="ValueOutOfRange" xml:space="preserve">
     <value>Unesite broj između 3 i 15</value>

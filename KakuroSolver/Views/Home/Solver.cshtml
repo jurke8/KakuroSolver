@@ -1,11 +1,11 @@
-﻿@model KakuroSolver.Models.KakuroViewModel
+﻿@model KakuroSolver.Models.KakuroReadModel
 
-    <!-- Solver Section -->
-<section id="solver" class="container content-section text-center">
+<!-- Solver Section -->
+<section id="solver" name="solver" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>Unos kakura</h2>
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Solver", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -22,7 +22,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.NumberOfColumns, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.NumberOfColumns, new { htmlAttributes = new { @class = "form-control form-numbers", @value="5" } })
+                            @Html.EditorFor(model => model.NumberOfColumns, new { htmlAttributes = new { @class = "form-control form-numbers", @value = "5" } })
                             @Html.ValidationMessageFor(model => model.NumberOfColumns, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -44,5 +44,8 @@
             }
         </div>
     </div>
+    <br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br />
 </section>
 

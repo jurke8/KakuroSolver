@@ -7,7 +7,7 @@ using System.Web;
 
 namespace KakuroSolver.Models
 {
-    public class KakuroViewModel
+    public class KakuroReadModel
     {
         [Required]
         [Display(Name = "File", ResourceType = typeof(Localization))]

@@ -2,7 +2,6 @@
 <html>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    @{Html.RenderPartial("Navigation");}
     @{Html.RenderPartial("Intro");}
     @{Html.RenderPartial("Solver");}
     @*@{Html.RenderPartial("About");}
@@ -11,5 +10,15 @@
     @{Html.RenderPartial("Helper");}
     @{Html.RenderPartial("Statistics");}
     @{Html.RenderPartial("Footer");}
+    <script>
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            $('html, body').animate({
+                scrollTop: $('#@ViewBag.Position').offset().top
+            },  0);
+        });
+    </script>
 </body>
+
+
 </html>
