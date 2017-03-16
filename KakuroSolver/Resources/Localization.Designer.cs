@@ -79,11 +79,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Web application which helps in solving kakuro puzzles.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File:.
         /// </summary>
         public static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helper.
+        /// </summary>
+        public static string Helper {
+            get {
+                return ResourceManager.GetString("Helper", resourceCulture);
             }
         }
         
@@ -115,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MENU.
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of columns.
         /// </summary>
         public static string NumberOfColumns {
@@ -129,6 +156,24 @@ namespace Resources {
         public static string NumberOfRows {
             get {
                 return ResourceManager.GetString("NumberOfRows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solver.
+        /// </summary>
+        public static string Solver {
+            get {
+                return ResourceManager.GetString("Solver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Statistics {
+            get {
+                return ResourceManager.GetString("Statistics", resourceCulture);
             }
         }
         

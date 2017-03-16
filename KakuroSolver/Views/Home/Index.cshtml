@@ -1,60 +1,15 @@
-﻿@model KakuroSolver.Models.KakuroViewModel
-@{
-    ViewBag.Title = "Kakuro solver";
-}
+﻿<!DOCTYPE html>
+<html>
 
-@*<div class="jumbotron">
-    <h1>@ViewBag.Title</h1>
-    <p class="lead">@ViewBag.Title is a blabla.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>*@
-
-<div>
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.NumberOfRows, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NumberOfRows, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NumberOfRows, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.NumberOfColumns, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NumberOfColumns, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NumberOfColumns, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.File, new { htmlAttributes = new { @class = "form-control"}, type="file" })
-                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="@Resources.Localization.Load" class="btn btn-lg btn-default btn-success" />
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-
-@*<div class="row">
-    <div class="col-md-4">
-        <h2>blabla</h2>
-        <p>
-            tekst
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    @{Html.RenderPartial("Navigation");}
+    @{Html.RenderPartial("Intro");}
+    @{Html.RenderPartial("Solver");}
+    @*@{Html.RenderPartial("About");}
+    @{Html.RenderPartial("Download");}
+    @{Html.RenderPartial("Contact");}*@
+    @{Html.RenderPartial("Helper");}
+    @{Html.RenderPartial("Statistics");}
+    @{Html.RenderPartial("Footer");}
+</body>
+</html>
