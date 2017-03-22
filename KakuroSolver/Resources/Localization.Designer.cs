@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to helps in solving kakuro puzzles.
+        ///   Looks up a localized string similar to helps you in solving kakuro puzzles.
         /// </summary>
         public static string Description {
             get {

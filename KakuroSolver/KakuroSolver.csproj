@@ -160,6 +160,7 @@
     <Compile Include="Helpers\Algorithm.cs" />
     <Compile Include="Helpers\PictureHelper.cs" />
     <Compile Include="Models\Cell.cs" />
+    <Compile Include="Models\KakuroModel.cs" />
     <Compile Include="Models\KakuroHelperModel.cs" />
     <Compile Include="Models\KakuroReadModel.cs" />
     <Compile Include="Models\PictureCell.cs" />

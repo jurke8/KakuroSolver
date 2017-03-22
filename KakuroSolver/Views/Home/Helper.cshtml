@@ -1,6 +1,6 @@
-﻿@model KakuroSolver.Models.KakuroHelperModel
+﻿@model KakuroSolver.Models.KakuroModel
 <!-- Helper Section -->
-<section id="helper" class="container content-section text-center">
+<section id="helper" name="helper" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>@Resources.Localization.Helper</h2>
@@ -12,17 +12,17 @@
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(model => model.NumberOfFields, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.KakuroHelper.NumberOfFields, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" style="text-align:left">
-                            @Html.EditorFor(model => model.NumberOfFields, new { htmlAttributes = new { @class = "form-control form-numbers" } })
-                            @Html.ValidationMessageFor(model => model.NumberOfFields, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.KakuroHelper.NumberOfFields, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.ValidationMessageFor(model => model.KakuroHelper.NumberOfFields, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.KakuroHelper.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" style="text-align:left">
-                            @Html.EditorFor(model => model.Sum, new { htmlAttributes = new { @class = "form-control form-numbers" } })
-                            @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.KakuroHelper.Sum, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.ValidationMessageFor(model => model.KakuroHelper.Sum, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -33,12 +33,12 @@
 
                 </div>
             }
-            @if (Model != null && Model.Combinations.Count() > 0)
+            @if (Model != null && Model.KakuroHelper.Combinations.Count() > 0)
             {
                 <div>
                     Combinations
                     <ul>
-                        @foreach (var combination in Model.Combinations)
+                        @foreach (var combination in Model.KakuroHelper.Combinations)
                         {
                             <li>
                                @String.Join(", ", combination.ToArray())

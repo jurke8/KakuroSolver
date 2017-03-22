@@ -28,22 +28,22 @@ namespace KakuroSolver.Controllers
             return View("Index");
         }
         [HttpPost]
-        public ActionResult Solver(KakuroReadModel model)
+        public ActionResult Solver(KakuroModel model)
         {
             @ViewBag.Position = "solver";
             if (!ModelState.IsValid)
             {
                 return View("Index");
             }
-            Bitmap originalImage = new Bitmap(model.File.InputStream);
+            Bitmap originalImage = new Bitmap(model.KakuroRead.File.InputStream);
 
             var ph = new PictureHelper();
-            var cells = ph.ReadFromImage(originalImage, model.NumberOfRows, model.NumberOfColumns);
+            var cells = ph.ReadFromImage(originalImage, model.KakuroRead.NumberOfRows, model.KakuroRead.NumberOfColumns);
 
-            return View("Index");
+            return View("Index", model);
         }
         [HttpPost]
-        public ActionResult Helper(KakuroHelperModel model)
+        public ActionResult Helper(KakuroModel model)
         {
             @ViewBag.Position = "helper";
             if (!ModelState.IsValid)
@@ -51,8 +51,8 @@ namespace KakuroSolver.Controllers
                 return View("Index");
             }
             // do stuff - call findall combinations
-            model.Combinations = new Algorithm().GetAllCombinations(new List<int>() {1,2,3,4,5,6,7,8,9 },model.NumberOfFields,model.Sum);
-            return View("Helper",model);
+            model.KakuroHelper.Combinations = new Algorithm().GetAllCombinations(new List<int>() {1,2,3,4,5,6,7,8,9 }, model.KakuroHelper.NumberOfFields,model.KakuroHelper.Sum);
+            return View("Index",model);
         }
         public ActionResult ChangeLanguage(string language, string returnUrl)
         {
