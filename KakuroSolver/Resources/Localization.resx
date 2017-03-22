@@ -127,13 +127,16 @@
     <value>Combinations: </value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Web application which helps in solving kakuro puzzles</value>
+    <value>helps in solving kakuro puzzles</value>
   </data>
   <data name="FieldRequired" xml:space="preserve">
     <value>This field is required</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>File:</value>
+  </data>
+  <data name="FindCombinationsButton" xml:space="preserve">
+    <value>Find combinations</value>
   </data>
   <data name="Helper" xml:space="preserve">
     <value>Helper</value>
@@ -144,8 +147,8 @@
   <data name="Language_short" xml:space="preserve">
     <value>hr-HR</value>
   </data>
-  <data name="Load" xml:space="preserve">
-    <value>Load</value>
+  <data name="LoadButton" xml:space="preserve">
+    <value>Load kakuro</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>MENU</value>

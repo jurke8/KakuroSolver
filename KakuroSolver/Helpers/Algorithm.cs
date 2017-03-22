@@ -449,7 +449,7 @@ namespace KakuroSolver.Helpers
             return true;
         }
 
-        private static List<List<int>> GetAllCombinations(List<int> allPossibleNumbers, int arrayLength, int arraySum)
+        public List<List<int>> GetAllCombinations(List<int> allPossibleNumbers, int arrayLength, int arraySum)
         {
             var allPossibleSolutions = new List<List<int>>();
             var possibleSolutions = new List<List<int>>();

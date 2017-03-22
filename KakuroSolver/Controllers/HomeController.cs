@@ -40,9 +40,6 @@ namespace KakuroSolver.Controllers
             var ph = new PictureHelper();
             var cells = ph.ReadFromImage(originalImage, model.NumberOfRows, model.NumberOfColumns);
 
-            // now you could pass the byte array to your model and store wherever 
-            // you intended to store it
-
             return View("Index");
         }
         [HttpPost]
@@ -53,10 +50,9 @@ namespace KakuroSolver.Controllers
             {
                 return View("Index");
             }
-            // now you could pass the byte array to your model and store wherever 
-            // you intended to store it
-
-            return View("Index");
+            // do stuff - call findall combinations
+            model.Combinations = new Algorithm().GetAllCombinations(new List<int>() {1,2,3,4,5,6,7,8,9 },model.NumberOfFields,model.Sum);
+            return View("Helper",model);
         }
         public ActionResult ChangeLanguage(string language, string returnUrl)
         {

@@ -4,7 +4,51 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>@Resources.Localization.Helper</h2>
+            @using (Html.BeginForm("Helper", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfFields, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="text-align:left">
+                            @Html.EditorFor(model => model.NumberOfFields, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.ValidationMessageFor(model => model.NumberOfFields, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="text-align:left">
+                            @Html.EditorFor(model => model.Sum, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="@Resources.Localization.FindCombinationsButton" class="btn btn-lg btn-default btn-success" style="float:left" />
+                        </div>
+                    </div>
+
+                </div>
+            }
+            @if (Model != null && Model.Combinations.Count() > 0)
+            {
+                <div>
+                    Combinations
+                    <ul>
+                        @foreach (var combination in Model.Combinations)
+                        {
+                            <li>
+                               @String.Join(", ", combination.ToArray())
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </section>

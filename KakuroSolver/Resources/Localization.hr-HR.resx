@@ -127,13 +127,16 @@
     <value>Kombinacije: </value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Web aplikacija koja pomaže u rješavanju kakuro zagonetki</value>
+    <value>pomaže u rješavanju kakuro zagonetki</value>
   </data>
   <data name="FieldRequired" xml:space="preserve">
     <value>Ovo polje je obvezno</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>Datoteka:</value>
+  </data>
+  <data name="FindCombinationsButton" xml:space="preserve">
+    <value>Pronađi kombinacije</value>
   </data>
   <data name="Helper" xml:space="preserve">
     <value>Pomagač</value>
@@ -144,8 +147,8 @@
   <data name="Language_short" xml:space="preserve">
     <value>en</value>
   </data>
-  <data name="Load" xml:space="preserve">
-    <value>Učitaj</value>
+  <data name="LoadButton" xml:space="preserve">
+    <value>Učitaj kakuro</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Izbornik</value>

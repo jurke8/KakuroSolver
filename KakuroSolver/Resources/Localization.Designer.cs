@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Web application which helps in solving kakuro puzzles.
+        ///   Looks up a localized string similar to helps in solving kakuro puzzles.
         /// </summary>
         public static string Description {
             get {
@@ -111,6 +111,15 @@ namespace Resources {
         public static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find combinations.
+        /// </summary>
+        public static string FindCombinationsButton {
+            get {
+                return ResourceManager.GetString("FindCombinationsButton", resourceCulture);
             }
         }
         
@@ -142,11 +151,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load.
+        ///   Looks up a localized string similar to Load kakuro.
         /// </summary>
-        public static string Load {
+        public static string LoadButton {
             get {
-                return ResourceManager.GetString("Load", resourceCulture);
+                return ResourceManager.GetString("LoadButton", resourceCulture);
             }
         }
         

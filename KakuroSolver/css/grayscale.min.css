@@ -14,8 +14,9 @@ a.language {
     height: 30px;
     text-indent: -9999px; /* hides the link text */
     background-position: center;
-    margin-top:7px !important;
+    margin-top:10px !important;
+    margin-left:5px !important;
 }
 .form-numbers {
-width:10% !important;
+width:15% !important;
 }
