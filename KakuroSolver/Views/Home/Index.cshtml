@@ -14,10 +14,7 @@
     @{Html.RenderPartial("Footer");}
     <script>
         $(document).ready(function () {
-            // Handler for .ready() called.
-            $('html, body').animate({
-                scrollTop: $('#@ViewBag.Position').offset().top
-            },  0);
+            $(document).scrollTop($('#@ViewBag.Position').offset().top);
         });
     </script>
 </body>

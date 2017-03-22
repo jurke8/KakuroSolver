@@ -35,13 +35,13 @@
             }
             @if (Model != null && Model.KakuroHelper.Combinations.Count() > 0)
             {
-                <div>
-                    Combinations
-                    <ul>
+                <div style="text-align:left">
+                    @Html.LabelFor(model => model.KakuroHelper.Combinations)
+                    <ul style="list-style-type:none">
                         @foreach (var combination in Model.KakuroHelper.Combinations)
                         {
                             <li>
-                               @String.Join(", ", combination.ToArray())
+                                @String.Join(", ", combination.ToArray())
                             </li>
                         }
                     </ul>
