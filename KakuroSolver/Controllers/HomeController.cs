@@ -38,7 +38,7 @@ namespace KakuroSolver.Controllers
             Bitmap originalImage = new Bitmap(model.File.InputStream);
 
             var ph = new PictureHelper();
-            var cells = ph.ReadFromImage(originalImage, 5, 5);
+            var cells = ph.ReadFromImage(originalImage, model.NumberOfRows, model.NumberOfColumns);
 
             // now you could pass the byte array to your model and store wherever 
             // you intended to store it

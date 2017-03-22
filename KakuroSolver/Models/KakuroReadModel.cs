@@ -9,18 +9,18 @@ namespace KakuroSolver.Models
 {
     public class KakuroReadModel
     {
-        [Required]
+        [Required(ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "File", ResourceType = typeof(Localization))]
         public HttpPostedFileBase File { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "NumberOfRows", ResourceType = typeof(Localization))]
-        [Range(3, 15, ErrorMessageResourceName = "ValueOutOfRange", ErrorMessageResourceType = typeof(Localization))]
+        [Range(3, 15, ErrorMessageResourceName = "ValueOutOfRange_3_15", ErrorMessageResourceType = typeof(Localization))]
         public int NumberOfRows { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "NumberOfColumns", ResourceType = typeof(Localization))]
-        [Range(3, 15, ErrorMessageResourceName = "ValueOutOfRange", ErrorMessageResourceType = typeof(Localization))]
+        [Range(3, 15, ErrorMessageResourceName = "ValueOutOfRange_3_15", ErrorMessageResourceType = typeof(Localization))]
         public int NumberOfColumns { get; set; }
     }
 }

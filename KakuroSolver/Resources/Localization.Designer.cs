@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This field is required.
+        /// </summary>
+        public static string FieldRequired {
+            get {
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File:.
         /// </summary>
         public static string File {
@@ -205,11 +214,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the number between 2 and 9.
+        /// </summary>
+        public static string ValueOutOfRange_2_9 {
+            get {
+                return ResourceManager.GetString("ValueOutOfRange_2_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the number between 3 and 15.
         /// </summary>
-        public static string ValueOutOfRange {
+        public static string ValueOutOfRange_3_15 {
             get {
-                return ResourceManager.GetString("ValueOutOfRange", resourceCulture);
+                return ResourceManager.GetString("ValueOutOfRange_3_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the number between 3 and 45.
+        /// </summary>
+        public static string ValueOutOfRange_3_45 {
+            get {
+                return ResourceManager.GetString("ValueOutOfRange_3_45", resourceCulture);
             }
         }
     }
