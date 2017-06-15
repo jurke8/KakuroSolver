@@ -1,4 +1,4 @@
-﻿using KakuroHelper;
+﻿using KakuroSolver.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -323,6 +323,27 @@ namespace KakuroSolver.Helpers
                     {
                         pictureCell.IsBorder = true;
                         cells.Add(pictureCell);
+                    }
+                }
+            }
+            return cells;
+        }
+        public List<PictureCell> GetBorder(int rows, int colums)
+        {
+            var cells = new List<PictureCell>();
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < colums; j++)
+                {
+                    if (i == 0 || j == 0)
+                    {
+                        var cell = new PictureCell() { IsBorder=true};
+                        cells.Add(cell);
+                    }
+                    else
+                    {
+                        var cell = new PictureCell() { IsBorder = false };
+                        cells.Add(cell);
                     }
                 }
             }

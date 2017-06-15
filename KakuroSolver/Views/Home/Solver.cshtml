@@ -5,47 +5,200 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>@Resources.Localization.Solver</h2>
-            @using (Html.BeginForm("Solver", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
 
+
+            @using (Html.BeginForm("LoadKakuro", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
                 <div class="form-horizontal">
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.LabelFor(model => model.KakuroRead.NumberOfRows, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" style="text-align:left">
-                            @Html.EditorFor(model => model.KakuroRead.NumberOfRows, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.EditorFor(model => model.KakuroRead.NumberOfRows, new { htmlAttributes = new { @class = "form-control form-numbers", @id = "rows" } })
                             @Html.ValidationMessageFor(model => model.KakuroRead.NumberOfRows, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.KakuroRead.NumberOfColumns, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" style="text-align:left">
-                            @Html.EditorFor(model => model.KakuroRead.NumberOfColumns, new { htmlAttributes = new { @class = "form-control form-numbers" } })
+                            @Html.EditorFor(model => model.KakuroRead.NumberOfColumns, new { htmlAttributes = new { @class = "form-control form-numbers", @id = "columns" } })
                             @Html.ValidationMessageFor(model => model.KakuroRead.NumberOfColumns, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
-                        @Html.LabelFor(model => model.KakuroRead.File, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10" style="margin-top:5px;text-align:left">
-                            @Html.TextBoxFor(model => model.KakuroRead.File, new { htmlAttributes = new { @class = "form-control" }, type = "file" })
-                            @Html.ValidationMessageFor(model => model.KakuroRead.File, "", new { @class = "text-danger" })
+                        <div class="col-md-offset-2 col-md-10" id="buttonDiv">
+                            <input type="submit" value="@Resources.Localization.CreateButton" class="btn btn-lg btn-default btn-success" style="float:left" />
+                            <a onclick="return toggleForm()" class="btn btn-lg btn-default btn-success" style="float:left;margin-left:20px">@Resources.Localization.LoadButton</a>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="@Resources.Localization.LoadButton" class="btn btn-lg btn-default btn-success" style="float:left" />
-                        </div>
-                    </div>
-
                 </div>
+                <div class="form-group" id="loadFormDiv" style="display:none">
+
+                    @Html.LabelFor(model => model.KakuroRead.File, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" style="text-align:left">
+                        @Html.TextBoxFor(model => model.KakuroRead.File, new { htmlAttributes = new { @class = "form-control" }, type = "file" })
+                        @Html.ValidationMessageFor(model => model.KakuroRead.File, "", new { @class = "text-danger" })
+                    </div>
+                    <br /><br />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@Resources.Localization.LoadButton" class="btn btn-lg btn-default btn-success" style="float:left" />
+
+                        <a onclick="return toggleForm()" class="btn btn-lg btn-default btn-success" style="float:left;margin-left:20px">@Resources.Localization.Cancel</a>
+                    </div>
+                    <br /><br />
+                </div>
+            }
+
+
+            <br /><br />
+            @using (Html.BeginForm("SolveKakuro", "Home", FormMethod.Post))
+            {
+                if (Model != null && Model.KakuroRead != null)
+                {
+                    @Html.Hidden("columns", Model.KakuroRead.NumberOfColumns);
+                    @Html.Hidden("rows", Model.KakuroRead.NumberOfRows);
+                }
+
+
+                <div id="kakuro" ; padding-top:10px">
+                    @if (Model != null && Model.PictureCells != null && Model.PictureCells.Count() > 0 && !Model.Solved)
+                {
+                        <table style="width:60%;height:400px;border:5px solid white;margin:0 auto">
+                            @for (int i = 0; i < Model.KakuroRead.NumberOfRows; i++)
+                            {
+                                <tr>
+                                    @for (int j = 0; j < Model.KakuroRead.NumberOfColumns; j++)
+                                    {
+
+                                        if (@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).IsBorder)
+                                        {
+                                            <td style="border:5px solid white;width:5%">
+                                                <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:black;width:100%;border:black;text-align:center;height:100%;font-size: large" type="text" name="values" value="@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).VerticalSum\@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).HorizontalSum">
+
+                                                @*@Model.PictureCells.ElementAt(i * 5 + j).VerticalSum \ @Model.PictureCells.ElementAt(i * 5 + j).HorizontalSum*@
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="border:5px solid white;background:#dfdfdf">
+                                                <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:#dfdfdf;width:100%;border:#dfdfdf;text-align:center;font-weight:bold;height:100%; font-size: large" type="text" name="values" value="">
+                                            </td>
+                                        }
+
+                                    }
+                                </tr>
+                            }
+                        </table>
+                    }
+                    @if (Model != null && Model.PictureCells != null && Model.PictureCells.Count() > 0 && Model.Solved)
+                    {
+                        <table style="width:60%;height:400px;border:5px solid white;margin:0 auto">
+                            @for (int i = 0; i < Model.KakuroRead.NumberOfRows; i++)
+                            {
+                                <tr>
+                                    @for (int j = 0; j < Model.KakuroRead.NumberOfColumns; j++)
+                                    {
+
+                                        if (@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).IsBorder)
+                                        {
+                                            <td style="border:5px solid white;width:5%">
+                                                <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:black;width:100%;border:black;text-align:center;height:100%;font-size: large" type="text" name="values" value="@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).VerticalSum\@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).HorizontalSum">
+
+                                                @*@Model.ResultCells[i][j].VerticalSum \ @Model.PictureCells.ElementAt(i * 5 + j).HorizontalSum*@
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="border:5px solid white;background:#dfdfdf">
+                                                <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:#dfdfdf;width:100%;border:#dfdfdf;text-align:center;font-weight:bold;height:100%;font-size: large;color:black" type="text" name="values" value="@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).Value">
+                                            </td>
+                                        }
+
+                                    }
+                                </tr>
+                            }
+                        </table>
+
+                    }
+                    <br />
+                    @if (Model != null && Model.PictureCells != null && Model.PictureCells.Count() > 0)
+                    {
+                        <input type="submit" value="@Resources.Localization.SolveButton" class="btn btn-lg btn-default btn-success" />
+                    }
+                    <br /><br />
+                </div>
+
             }
         </div>
     </div>
     <br />
+    <br />
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br />
 </section>
+<script>
+    $(document).ready(function () {
+        $('.create').click(function () {
+            tableCreate();
+        });
+    });
+    function changed(selectInput) {
+        var value = selectInput.value;
+        if (value.indexOf("\\") >= 0) {
+            selectInput.style.backgroundColor = "black";
+            selectInput.style.color = "white";
+            selectInput.style.fontWeight = "normal";
+        }
+        else {
+            selectInput.style.backgroundColor = "#dfdfdf";
+            selectInput.style.color = "black"; 
+            selectInput.style.fontWeight = "bold";
+        }
+    }
+    function toggleForm() {
+        var x = document.getElementById("loadFormDiv");
+        var y = document.getElementById("buttonDiv");
+        if (x.style.display == "none") {
+            x.style.display = "inherit";
+            y.style.display = "none";
+        }
+        else {
+            x.style.display = "none";
+            y.style.display = "inherit";
+        }
+    }
 
+    function tableCreate() {
+        @if (Model != null)
+        {
+            var cells = @Html.Raw(Json.Encode(Model.PictureCells));
+        }
+
+        var div = document.getElementById("kakuro");
+        var rows = document.getElementById("rows").value;
+        var columns = document.getElementById("columns").value;
+
+        if (rows > 2 && columns > 2 && rows < 16 && columns < 16) {
+            while (div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+            tbl = document.createElement('table');
+            tbl.style.width = '60%';
+            tbl.style.height = '400px';
+
+            tbl.style.border = '5px solid white';
+            tbl.style.margin = '0 auto';
+
+            for (var i = 0; i < rows; i++) {
+                var tr = tbl.insertRow();
+                for (var j = 0; j < columns; j++) {
+                    var td = tr.insertCell();
+                    td.appendChild(document.createTextNode('12\\23'));
+                    td.style.border = '5px solid white';
+                }
+            }
+            div.appendChild(tbl);
+        }
+
+    }
+</script>

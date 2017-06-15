@@ -79,11 +79,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Combinations: .
         /// </summary>
         public static string Combinations {
             get {
                 return ResourceManager.GetString("Combinations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create kakuro.
+        /// </summary>
+        public static string CreateButton {
+            get {
+                return ResourceManager.GetString("CreateButton", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace Resources {
         public static string NumberOfRows {
             get {
                 return ResourceManager.GetString("NumberOfRows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solve.
+        /// </summary>
+        public static string SolveButton {
+            get {
+                return ResourceManager.GetString("SolveButton", resourceCulture);
             }
         }
         

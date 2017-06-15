@@ -33,10 +33,10 @@
 
                 </div>
             }
-            @if (Model != null && Model.KakuroHelper.Combinations.Count() > 0)
+            @if (Model != null && Model.KakuroHelper != null && Model.KakuroHelper.Combinations.Count() > 0)
             {
                 <div style="text-align:left">
-                    @Html.LabelFor(model => model.KakuroHelper.Combinations)
+                    @Resources.Localization.Combinations
                     <ul style="list-style-type:none">
                         @foreach (var combination in Model.KakuroHelper.Combinations)
                         {

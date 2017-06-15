@@ -9,7 +9,7 @@ namespace KakuroSolver.Models
 {
     public class KakuroReadModel
     {
-        [Required(ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Localization))]
+        //[Required(ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "File", ResourceType = typeof(Localization))]
         public HttpPostedFileBase File { get; set; }
 

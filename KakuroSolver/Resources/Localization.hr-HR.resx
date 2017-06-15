@@ -123,8 +123,14 @@
   <data name="Author" xml:space="preserve">
     <value>Ivan Jurić</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
   <data name="Combinations" xml:space="preserve">
     <value>Kombinacije: </value>
+  </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Napravi kakuro</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>pomaže vam u rješavanju kakuro zagonetki</value>
@@ -161,6 +167,9 @@
   </data>
   <data name="NumberOfRows" xml:space="preserve">
     <value>Redci: </value>
+  </data>
+  <data name="SolveButton" xml:space="preserve">
+    <value>Riješi</value>
   </data>
   <data name="Solver" xml:space="preserve">
     <value>Rješavač</value>

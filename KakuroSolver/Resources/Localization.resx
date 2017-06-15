@@ -123,8 +123,14 @@
   <data name="Author" xml:space="preserve">
     <value>Ivan Jurić</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Combinations" xml:space="preserve">
     <value>Combinations: </value>
+  </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Create kakuro</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>helps you in solving kakuro puzzles</value>
@@ -161,6 +167,9 @@
   </data>
   <data name="NumberOfRows" xml:space="preserve">
     <value>Rows: </value>
+  </data>
+  <data name="SolveButton" xml:space="preserve">
+    <value>Solve</value>
   </data>
   <data name="Solver" xml:space="preserve">
     <value>Solver</value>
