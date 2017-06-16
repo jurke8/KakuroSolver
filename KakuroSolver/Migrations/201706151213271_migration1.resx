@@ -117,100 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Kakuro solver</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAM1Y227bOBB9L9B/EPScmrkUi24gt0jspAjaJEWU7TsljV2ivKgimY2/rQ/7SfsLO9TdlO1azmKx8ItEzRyeGc4cjfz3z7+iD8+CB09QaKbkNDyZHIcByFRlTC6noTWLN+/CD+9fv4quMvEcfG3szpwdeko9Db8Zk58TotNvIKieCJYWSquFmaRKEJopcnp8/Ds5OSGAECFiBUH0YKVhAsobvJ0pmUJuLOW3KgOu63V8EpeowR0VoHOawjT8RL/bQsWKI+lJZT6ZX1YXYXDBGUVOMfBFGFAplaEGGZ//oSE2hZLLOMcFyh9XOaDdgnINdSTnnfm+QR2fuqBI59hApVYbJUYCnpzVWSK++0G5DtssYh6vMN9m5aIuc9mm0eFrw9Iw8Pc8n/HC2e/O+MTDOQr61kdtxWBhud9RMLPc2AKmEqwpKD8KvtiEs/QTrB7Vd5BTaTnvM0fu+GxtAZe+FCqHwqweYFHHc5OFAVn3I75j69bzqUL8aBle3+HeNOHQ1gXZ6f6g/tQNwI00Z6ejEWaKWyFfCPJZ0ewRm6mH8tvb0Sjlgb0cxpGBNq2XSnGg8jAyI1Ei0tX4sPJRYQxlEop6h4s8x6orC32euIfwbDb0AMpG3QbYfKaw4JVmBR6D2dxVeLIdqUqV/IbZHERLt1NCUklhI5lki2ZGtzTPUbx7GlqvBHEloLM38Xg9ERUGwZB2JLfdyaiCLsF76uo9g2tWaDOnhibUHeEsEwOzjYezJfHNllvy7wtHdxyNo7tec95L53zgLs3XGLkAacokQMtzqLgDhPJ1RzktNshUpRTbpG6Xd6VSff9qZX+EVqX6IO3i/jidUPWButX9kXpi1YfqLY9jBdmQE4zKcqNYAzobUSLiFYtfpmRQp96rza//XRrim7S7t1riaUZU9++vh7FBQ1cmYYDpeWKZa+Z4pQ2IiTOYxD/4jDOMtzO4pZItQJvq7R/iFHTqTXH/n4mKaJ3xcWPVfz7JWMl+WMDMIrMFg+JFUw1zJ/WymeYQCH+iSdjyEJjBSHMgzvpMk7ADmYxAGDfLDN+qo4aUfWaUqq2nYZYojKLiPZx1DpxkhmoTkf4HYjQHzZYdhPtclJC6Nu5AG5sbuVBN9jHkPqPGxDucWzA0w8xdFNgxNDX4OAWtUQ/D4CvlFk2uRALZjby3JrfmQmsQCV/1443I7v3LcW2dc3Sfuzv9b4SANBmGAPfy0jKetbyvN5TWFghXRB8B10t5xG9lhFuuWqQ7JfcEqtM3hxykU6FHEDlHMH0vY/oEh3DDKfwzLGm6al4a20F+fRDraY/mjC4LKnSN0fm7Pz2I+9fj/T+cm3f1JxEAAA==</value>
   </data>
-  <data name="Author" xml:space="preserve">
-    <value>Ivan Jurić</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Combinations" xml:space="preserve">
-    <value>Combinations: </value>
-  </data>
-  <data name="CreateButton" xml:space="preserve">
-    <value>Create kakuro</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>helps you in solving kakuro puzzles</value>
-  </data>
-  <data name="FieldRequired" xml:space="preserve">
-    <value>This field is required</value>
-  </data>
-  <data name="File" xml:space="preserve">
-    <value>File:</value>
-  </data>
-  <data name="FindCombinationsButton" xml:space="preserve">
-    <value>Find combinations</value>
-  </data>
-  <data name="Graph_Dimension" xml:space="preserve">
-    <value>dimension</value>
-  </data>
-  <data name="Graph_NumberOfFields" xml:space="preserve">
-    <value>number of fields</value>
-  </data>
-  <data name="Graph_Time" xml:space="preserve">
-    <value>time</value>
-  </data>
-  <data name="Graph_Time_s" xml:space="preserve">
-    <value>time (s)</value>
-  </data>
-  <data name="Helper" xml:space="preserve">
-    <value>Helper</value>
-  </data>
-  <data name="Language_label" xml:space="preserve">
-    <value>EN</value>
-  </data>
-  <data name="Language_short" xml:space="preserve">
-    <value>hr-HR</value>
-  </data>
-  <data name="LoadButton" xml:space="preserve">
-    <value>Load kakuro</value>
-  </data>
-  <data name="LoadError" xml:space="preserve">
-    <value>Load error</value>
-  </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Loading</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>MENU</value>
-  </data>
-  <data name="NumberOfColumns" xml:space="preserve">
-    <value>Columns: </value>
-  </data>
-  <data name="NumberOfFields" xml:space="preserve">
-    <value>Fields: </value>
-  </data>
-  <data name="NumberOfRows" xml:space="preserve">
-    <value>Rows: </value>
-  </data>
-  <data name="SolveButton" xml:space="preserve">
-    <value>Solve</value>
-  </data>
-  <data name="Solver" xml:space="preserve">
-    <value>Solver</value>
-  </data>
-  <data name="Solving" xml:space="preserve">
-    <value>Solving</value>
-  </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>Statistics</value>
-  </data>
-  <data name="Sum" xml:space="preserve">
-    <value>Sum: </value>
-  </data>
-  <data name="ValueOutOfRange_2_9" xml:space="preserve">
-    <value>Enter the number between 2 and 9</value>
-  </data>
-  <data name="ValueOutOfRange_3_15" xml:space="preserve">
-    <value>Enter the number between 3 and 15</value>
-  </data>
-  <data name="ValueOutOfRange_3_45" xml:space="preserve">
-    <value>Enter the number between 3 and 45</value>
-  </data>
-  <data name="WrongEntry" xml:space="preserve">
-    <value>Wrong entry</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

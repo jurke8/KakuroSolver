@@ -1,9 +1,191 @@
-﻿    <!-- Statistics Section -->
+﻿@model KakuroSolver.Models.KakuroModel
+<!-- Statistics Section -->
 <section id="statistics" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2>@Resources.Localization.Statistics</h2>
+            <h2 style="margin-bottom:80px">@Resources.Localization.Statistics</h2>
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    @*Ukupno: @Model.StatisticsModel.KakuroNumber
+    Rješeno: @Model.StatisticsModel.SolvedKakuros*@
+    <div class='content' style="display:inline-flex">
+        <div class='load' style="margin-right:20px">
+            <h4 style="margin:0 0 0 0 ">@Resources.Localization.Loading</h4>
+        </div>
+        <div class='solve'>
+            <h4 style="margin:0 0 0 0 ">@Resources.Localization.Solving</h4>
+        </div>
+        <!-- /the chart goes here -->
+    </div>
+    <br /><br /><br /><br /><br /><br /><br />
 </section>
+<script>
+    $(document).ready(function()
+    {
+        var model = @Html.Raw(Json.Encode(Model.StatisticsModel.KakuroStatistics.Where(k => k.LoadTime > 0)));
+
+        var model2 = @Html.Raw(Json.Encode(Model.StatisticsModel.KakuroStatistics.Where(k => k.SolveTime > 0)));
+
+
+        var margin = {top: 20, right: 20, bottom: 30, left: 40},
+            width = 480 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        var x = d3.scaleLinear()
+            .range([0, width]);
+
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+
+        var xAxis = d3.axisBottom(x);
+
+        var yAxis = d3.axisLeft(y);
+
+        var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+        var svg = d3.select(".load").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        model.forEach(function(d) {
+            d.NumberOfFields = +d.NumberOfFields;
+            d.LoadTime = +d.LoadTime/1000;
+        });
+
+        x.domain(d3.extent(model, function(d) { return d.NumberOfFields; })).nice();
+        y.domain(d3.extent(model, function(d) { return d.LoadTime; })).nice();
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+          .append("text")
+            .attr("class", "label")
+            .attr("x", width)
+            .attr("y", -6)
+            .style("text-anchor", "end")
+        .text('@Resources.Localization.Graph_NumberOfFields');
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+          .append("text")
+            .attr("class", "label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+        .text('@Resources.Localization.Graph_Time_s');
+
+        svg.selectAll(".dot")
+            .data(model)
+          .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 5)
+            .attr("cx", function(d) { return x(d.NumberOfFields); })
+            .attr("cy", function(d) { return y(d.LoadTime); })
+            .style("fill", function(d) { if (d.Loaded == true) {
+                return "green";
+            }
+            else {
+                return "red";
+            }})
+        .on("mouseover", function(d) {
+            tooltip.transition()
+                 .duration(200)
+                 .style("opacity", .9);
+            tooltip.html('@Resources.Localization.Graph_Dimension'+ ": " + d.Rows + "x"  + d.Columns + "<br/>" +
+          '@Resources.Localization.Graph_Time'+ ": " + d.LoadTime + "s")
+                 .style("left", (d3.event.pageX + 10) + "px")
+                 .style("top", (d3.event.pageY - 30) + "px")
+                  .style("color", function() { if (d.Loaded == true) {
+                      return "green";
+                  }
+                  else {
+                      return "red";
+                  }});
+        })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+
+
+
+        svg = d3.select(".solve").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        model2.forEach(function(d) {
+            d.NumberOfFields = +d.NumberOfFields;
+            d.SolveTime = +d.SolveTime/1000;
+        });
+
+        x.domain(d3.extent(model2, function(d) { return d.NumberOfFields; })).nice();
+        y.domain(d3.extent(model2, function(d) { return d.SolveTime; })).nice();
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+          .append("text")
+            .attr("class", "label")
+            .attr("x", width)
+            .attr("y", -6)
+            .style("text-anchor", "end")
+            .text('@Resources.Localization.Graph_NumberOfFields');
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+          .append("text")
+            .attr("class", "label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text('@Resources.Localization.Graph_Time_s');
+
+        svg.selectAll(".dot")
+            .data(model2)
+          .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 5)
+            .attr("cx", function(d) { return x(d.NumberOfFields); })
+            .attr("cy", function(d) { return y(d.SolveTime); })
+            .style("fill", function(d) { if (d.Solved == true) {
+                return "green";
+            }
+            else {
+                return "red";
+            }})
+            .on("mouseover", function(d) {
+                tooltip.transition()
+                     .duration(200)
+                     .style("opacity", .9);
+                tooltip.html('@Resources.Localization.Graph_Dimension'+ ": " + d.Rows + "x"  + d.Columns + "<br/>" +
+                  '@Resources.Localization.Graph_Time'+ ": " + d.SolveTime + "s")
+                     .style("left", (d3.event.pageX + 10) + "px")
+                     .style("top", (d3.event.pageY - 40) + "px")
+                      .style("color", function() { if (d.Solved == true) {
+                          return "green";
+                      }
+                      else {
+                          return "red";
+                      }});
+            })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
+
+    });
+</script>

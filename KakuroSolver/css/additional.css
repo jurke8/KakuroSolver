@@ -1,0 +1,24 @@
+﻿.axis text {
+    fill:white;
+    font-size:12px
+}
+.axis line {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+.axis path {
+  stroke: white;
+}
+.tick {
+  stroke: white;
+}
+.dot {
+  stroke: #000;
+}
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}

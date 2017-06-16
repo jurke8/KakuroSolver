@@ -144,6 +144,18 @@
   <data name="FindCombinationsButton" xml:space="preserve">
     <value>Pronađi kombinacije</value>
   </data>
+  <data name="Graph_Dimension" xml:space="preserve">
+    <value>dimenzije</value>
+  </data>
+  <data name="Graph_NumberOfFields" xml:space="preserve">
+    <value>broj polja</value>
+  </data>
+  <data name="Graph_Time" xml:space="preserve">
+    <value>vrijeme</value>
+  </data>
+  <data name="Graph_Time_s" xml:space="preserve">
+    <value>vrijeme (s)</value>
+  </data>
   <data name="Helper" xml:space="preserve">
     <value>Pomagač</value>
   </data>
@@ -155,6 +167,12 @@
   </data>
   <data name="LoadButton" xml:space="preserve">
     <value>Učitaj kakuro</value>
+  </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>Greška pri čitanju</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Učitavanje</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Izbornik</value>
@@ -174,6 +192,9 @@
   <data name="Solver" xml:space="preserve">
     <value>Rješavač</value>
   </data>
+  <data name="Solving" xml:space="preserve">
+    <value>Rješavanje</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistika</value>
   </data>
@@ -188,5 +209,8 @@
   </data>
   <data name="ValueOutOfRange_3_45" xml:space="preserve">
     <value>Unesite broj između 3 i 45</value>
+  </data>
+  <data name="WrongEntry" xml:space="preserve">
+    <value>Krivi unos</value>
   </data>
 </root>

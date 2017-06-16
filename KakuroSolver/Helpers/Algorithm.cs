@@ -66,9 +66,16 @@ namespace KakuroSolver.Helpers
                 {
                     if (cells.ElementAt(rowNumber * nColsGlobal + columnNumber).IsBorder)
                     {
+                        int horizontalSum, verticalSum;
                         cellList[rowNumber][columnNumber].Border =true;
-                        cellList[rowNumber][columnNumber].HorizontalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).HorizontalSum);
-                        cellList[rowNumber][columnNumber].VerticalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).VerticalSum);
+                        //cellList[rowNumber][columnNumber].HorizontalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).HorizontalSum);
+                        //cellList[rowNumber][columnNumber].VerticalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).VerticalSum);
+
+                        int.TryParse(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).HorizontalSum, out horizontalSum);
+                        int.TryParse(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).VerticalSum, out verticalSum);
+                        cellList[rowNumber][columnNumber].HorizontalSum = horizontalSum;
+                        cellList[rowNumber][columnNumber].VerticalSum = verticalSum;
+
                         cellList[rowNumber][columnNumber].PossibleNumbers.Clear();
                         cellList[rowNumber][columnNumber].AllPossibleNumbers.Clear();
                         cellList[rowNumber][columnNumber].PossibleHorizontalNumbers.Clear();

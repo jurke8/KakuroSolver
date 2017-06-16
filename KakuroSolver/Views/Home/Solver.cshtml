@@ -58,6 +58,10 @@
                 {
                     @Html.Hidden("columns", Model.KakuroRead.NumberOfColumns);
                     @Html.Hidden("rows", Model.KakuroRead.NumberOfRows);
+                    if (Model.KakuroStatistic != null)
+                    {
+                        @Html.Hidden("kakuroid", Model.KakuroStatistic.Id)
+                    }
                 }
 
 

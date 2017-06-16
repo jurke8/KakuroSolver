@@ -1,4 +1,5 @@
 ﻿using KakuroSolver.Models;
+using KakuroSolver.Models.DBModels;
 using Resources;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace KakuroSolver.Models
         public KakuroHelperModel KakuroHelper { get; set; }
         public KakuroReadModel KakuroRead { get; set; }
         public List<PictureCell> PictureCells { get; set; }
+        public KakuroStatistic KakuroStatistic { get; set; }
+        public StatisticsModel StatisticsModel { get; set; }
+
         public bool Solved { get; set; }
     }
 }

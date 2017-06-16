@@ -142,6 +142,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dimension.
+        /// </summary>
+        public static string Graph_Dimension {
+            get {
+                return ResourceManager.GetString("Graph_Dimension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of fields.
+        /// </summary>
+        public static string Graph_NumberOfFields {
+            get {
+                return ResourceManager.GetString("Graph_NumberOfFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to time.
+        /// </summary>
+        public static string Graph_Time {
+            get {
+                return ResourceManager.GetString("Graph_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to time (s).
+        /// </summary>
+        public static string Graph_Time_s {
+            get {
+                return ResourceManager.GetString("Graph_Time_s", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Helper.
         /// </summary>
         public static string Helper {
@@ -174,6 +210,24 @@ namespace Resources {
         public static string LoadButton {
             get {
                 return ResourceManager.GetString("LoadButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load error.
+        /// </summary>
+        public static string LoadError {
+            get {
+                return ResourceManager.GetString("LoadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading.
+        /// </summary>
+        public static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
         
@@ -232,6 +286,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Solving.
+        /// </summary>
+        public static string Solving {
+            get {
+                return ResourceManager.GetString("Solving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistics.
         /// </summary>
         public static string Statistics {
@@ -273,6 +336,15 @@ namespace Resources {
         public static string ValueOutOfRange_3_45 {
             get {
                 return ResourceManager.GetString("ValueOutOfRange_3_45", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong entry.
+        /// </summary>
+        public static string WrongEntry {
+            get {
+                return ResourceManager.GetString("WrongEntry", resourceCulture);
             }
         }
     }

@@ -167,11 +167,24 @@
     </Compile>
     <Compile Include="Helpers\Algorithm.cs" />
     <Compile Include="Helpers\PictureHelper.cs" />
+    <Compile Include="Migrations\201706151001141_InitialCreate.cs" />
+    <Compile Include="Migrations\201706151001141_InitialCreate.Designer.cs">
+      <DependentUpon>201706151001141_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706151213271_migration1.cs" />
+    <Compile Include="Migrations\201706151213271_migration1.Designer.cs">
+      <DependentUpon>201706151213271_migration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cell.cs" />
+    <Compile Include="Models\DBModels\BaseEntity.cs" />
+    <Compile Include="Models\DBModels\Context.cs" />
+    <Compile Include="Models\DBModels\KakuroStatistic.cs" />
     <Compile Include="Models\KakuroModel.cs" />
     <Compile Include="Models\KakuroHelperModel.cs" />
     <Compile Include="Models\KakuroReadModel.cs" />
     <Compile Include="Models\PictureCell.cs" />
+    <Compile Include="Models\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Localization.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -185,6 +198,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\additional.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\grayscale.css" />
@@ -199,6 +213,7 @@
     <Content Include="img\maxresdefault.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\graphs.js" />
     <Content Include="js\grayscale.js" />
     <Content Include="js\grayscale.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -303,16 +318,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="data.tsv" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706151001141_InitialCreate.resx">
+      <DependentUpon>201706151001141_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151213271_migration1.resx">
+      <DependentUpon>201706151213271_migration1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.hr-HR.resx">
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
