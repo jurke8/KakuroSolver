@@ -8,66 +8,21 @@ namespace KakuroSolver.Helpers
 {
     public class Algorithm
     {
-        public static int nRowsGlobal, nColsGlobal;
-        public List<List<Cell>> GetResult(List<PictureCell> cells, int nRows, int nCols)
-        {
-            nRowsGlobal = nRows;
-            nColsGlobal = nCols;
-            List<List<Cell>> Sums = CreateCellList();
-            Sums = ReadFromBoard(Sums, cells);
-            //if (Sums[0][0].Value == -2)
-            //    return Sums; //ako zbroj vertikalnih i horizontalnih suma nije jednak
-
-
-            FindAllPossibleNumbers(Sums);       //FirstIteration
-            int i = 0;
-            while (i < 15)
-            {
-                Iterate(Sums);
-                CheckMaxMinSums(Sums);
-                Iterate(Sums);
-                FindPossibleNumbers(Sums);
-                ClearPossibleNumbers(Sums);
-                i++;                            //broj iteracija
-                if (IsBoardValid(Sums))
-                {
-                    //WriteToBoard(Sums);         //ispis na ploču kad riješi sve
-                    return Sums;
-                }
-            }
-            //WriteToBoard(Sums);
-            return Sums;
-        }
-
-        private List<List<Cell>> CreateCellList()
-        {
-            List<List<Cell>> cellList = new List<List<Cell>>();
-            for (int i = 0; i < nRowsGlobal; i++)
-            {
-                var nestedList = new List<Cell>();
-
-                for (int j = 0; j < nColsGlobal; j++)
-                {
-                    var nestedCell = new Cell { RowNumber = i, ColumnNumber = j };
-                    nestedList.Add(nestedCell);
-                }
-                cellList.Add(nestedList);
-            }
-            return cellList;
-        }
+        public int nRowsGlobal, nColsGlobal;
 
         private List<List<Cell>> ReadFromBoard(List<List<Cell>> cellList, List<PictureCell> cells)
         {
             int totalVerticalSum = 0;
             int totalhorizontalSum = 0;
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     if (cells.ElementAt(rowNumber * nColsGlobal + columnNumber).IsBorder)
                     {
                         int horizontalSum, verticalSum;
-                        cellList[rowNumber][columnNumber].Border =true;
+                        cellList[rowNumber][columnNumber].Border = true;
                         //cellList[rowNumber][columnNumber].HorizontalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).HorizontalSum);
                         //cellList[rowNumber][columnNumber].VerticalSum = Convert.ToInt32(cells.ElementAt(rowNumber * nColsGlobal + columnNumber).VerticalSum);
 
@@ -161,16 +116,170 @@ namespace KakuroSolver.Helpers
             }
             return cellList;
         }
+        //NEW
+        public List<List<Cell>> GetResult(List<PictureCell> cells, int nRows, int nCols)
+        {
+            nRowsGlobal = nRows;
+
+            nColsGlobal = nCols;
+            List<List<Cell>> Sums = CreateCellList();
+            Sums = ReadFromBoard(Sums, cells);
+
+            FindAllPossibleNumbers(Sums);       //FirstIteration
+            int i = 0;
+
+            while (i < 15)
+            {
+                Iterate(Sums);
+                CheckMaxMinSums(Sums);
+                Iterate(Sums);
+                FindPossibleNumbers(Sums);
+                ClearPossibleNumbers(Sums);
+                i++;                            //broj iteracija
+                if (IsBoardValid(Sums))
+                {
+                    return Sums;
+                }
+            }
+            return Sums;
+        }
+        private List<List<Cell>> CreateCellList()
+        {
+            List<List<Cell>> cellList = new List<List<Cell>>();
+            for (int i = 0; i < nRowsGlobal; i++)
+            {
+                var nestedList = new List<Cell>();
+
+                for (int j = 0; j < nColsGlobal; j++)
+                {
+                    var nestedCell = new Cell { RowNumber = i, ColumnNumber = j };
+                    nestedList.Add(nestedCell);
+                }
+                cellList.Add(nestedList);
+            }
+            return cellList;
+        }
+        //private List<List<Cell>> ReadFromBoard(List<List<Cell>> cellList)
+        //{
+        //    int rowNumber;
+        //    int columnNumber;
+        //    int backSlashPos;
+        //    int totalVerticalSum = 0;
+        //    int totalhorizontalSum = 0;
+        //    foreach (Control c in this.table.Controls)
+        //    {
+        //        rowNumber = this.table.GetRow(c);
+        //        columnNumber = this.table.GetColumn(c);
+        //        backSlashPos = c.Text.IndexOf("\\");
+        //        try
+        //        {
+        //            if (backSlashPos != -1)         //if border then
+        //            {
+        //                cellList[rowNumber][columnNumber].Border = true;            //set border on true
+        //                string[] numbers = c.Text.Split('\\');
+        //                cellList[rowNumber][columnNumber].VerticalSum = (numbers[0] != "" && numbers[0] != " ") ? int.Parse(numbers[0]) : 0;//set vertical sum of border
+        //                cellList[rowNumber][columnNumber].HorizontalSum = (numbers[1] != "" && numbers[1] != " ") ? int.Parse(numbers[1]) : 0;//set horizontal sum of border
+        //                cellList[rowNumber][columnNumber].PossibleNumbers.Clear();
+        //                cellList[rowNumber][columnNumber].AllPossibleNumbers.Clear();
+        //                cellList[rowNumber][columnNumber].PossibleHorizontalNumbers.Clear();
+        //                cellList[rowNumber][columnNumber].PossibleVerticalNumbers.Clear();
+        //                totalVerticalSum += cellList[rowNumber][columnNumber].VerticalSum;
+        //                totalhorizontalSum += cellList[rowNumber][columnNumber].HorizontalSum;
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return cellList;
+        //        }
+        //    }
+        //    if (totalVerticalSum != totalhorizontalSum)
+        //    {
+        //        cellList[0][0].Value = -2;
+        //        return cellList;
+        //    }
+        //    foreach (Control c in this.table.Controls)
+        //    {
+        //        rowNumber = this.table.GetRow(c);
+        //        columnNumber = this.table.GetColumn(c);
+        //        try
+        //        {
+        //            if (cellList[rowNumber][columnNumber].Border)
+        //            {
+        //                for (int i = columnNumber + 1; i < nColsGlobal; i++)                //set horizontal lengths of border
+        //                {
+        //                    if (!cellList[rowNumber][i].Border)
+        //                    {
+        //                        cellList[rowNumber][columnNumber].HorizontalLength++;
+        //                    }
+        //                    else
+        //                    {
+        //                        break;
+        //                    }
+        //                }
+        //                for (int j = rowNumber + 1; j < nRowsGlobal; j++)
+        //                {
+        //                    if (!cellList[j][columnNumber].Border)
+        //                    {
+        //                        cellList[rowNumber][columnNumber].VerticalLength++;     //set vertical lengths of border
+        //                    }
+        //                    else
+        //                    {
+        //                        break;
+        //                    }
+        //                }
+        //                if (cellList[rowNumber][columnNumber].HorizontalLength > 9 || cellList[rowNumber][columnNumber].VerticalLength > 9)
+        //                {
+        //                    MessageBox.Show("Krivi unos kakura");
+        //                    cellList[0][0].Value = -2;
+        //                    return cellList;
+        //                }
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            MessageBox.Show("Krivi unos horizontal i vertical length");
+        //            return cellList;
+        //        }
+        //    }
+        //    foreach (Control c in this.table.Controls)
+        //    {
+        //        rowNumber = this.table.GetRow(c);
+        //        columnNumber = this.table.GetColumn(c);
+        //        try
+        //        {
+        //            if (cellList[rowNumber][columnNumber].Border)
+        //            {
+        //                for (int i = columnNumber + 1; i < nColsGlobal && !cellList[rowNumber][i].Border; i++)
+        //                {
+        //                    //set horizontal sum and length of all elements in border row
+        //                    cellList[rowNumber][i].HorizontalSum = cellList[rowNumber][i].VirtualHorizontalSum = cellList[rowNumber][columnNumber].HorizontalSum;
+        //                    cellList[rowNumber][i].HorizontalLength = cellList[rowNumber][i].VirtualHorizontalLength = cellList[rowNumber][columnNumber].HorizontalLength;
+        //                }
+        //                for (int j = rowNumber + 1; j < nRowsGlobal && !cellList[j][columnNumber].Border; j++)
+        //                {
+        //                    //set vertical sum and length of all elements in border column
+        //                    cellList[j][columnNumber].VerticalSum = cellList[j][columnNumber].VirtualVerticalSum = cellList[rowNumber][columnNumber].VerticalSum;
+        //                    cellList[j][columnNumber].VerticalLength = cellList[j][columnNumber].VirtualVerticalLength = cellList[rowNumber][columnNumber].VerticalLength;
+        //                }
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            MessageBox.Show("Krivi unos horizontal i vertical lenght i sum");
+        //            return cellList;
+        //        }
+        //    }
+        //    return cellList;
+        //}
         private List<List<Cell>> Iterate(List<List<Cell>> cellList)
         {
             ListToValue(cellList);
+
             var restrictedHorizontalNumbers = new List<int>();
             var restrictedVerticalNumbers = new List<int>();
-            //Remove certain (100%) value from other possible numbers in that row / column
-
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     try
                     {
@@ -311,6 +420,7 @@ namespace KakuroSolver.Helpers
                     }
                     catch (Exception)
                     {
+                        return cellList;
                     }
                     ListToValue(cellList);
                 }
@@ -319,12 +429,10 @@ namespace KakuroSolver.Helpers
         }
         private void ListToValue(List<List<Cell>> cellList)
         {
-
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
-
                     if (cellList[rowNumber][columnNumber].PossibleNumbers.Count == 1)
                     {
                         cellList[rowNumber][columnNumber].Value = cellList[rowNumber][columnNumber].PossibleNumbers[0];
@@ -339,72 +447,26 @@ namespace KakuroSolver.Helpers
         }
         private void ClearPossibleNumbers(List<List<Cell>> cellList)
         {
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
+                    if (cellList[rowNumber][columnNumber].Value != -1)
                     {
-                        if (cellList[rowNumber][columnNumber].Value != -1)
-                        {
-                            cellList[rowNumber][columnNumber].Locked = true;
-                            cellList[rowNumber][columnNumber].PossibleNumbers.Clear();
-                            cellList[rowNumber][columnNumber].PossibleNumbers.Add(cellList[rowNumber][columnNumber].Value);
-                        }
+                        cellList[rowNumber][columnNumber].Locked = true;
+                        cellList[rowNumber][columnNumber].PossibleNumbers.Clear();
+                        cellList[rowNumber][columnNumber].PossibleNumbers.Add(cellList[rowNumber][columnNumber].Value);
                     }
                 }
             }
         }
-        private void WriteToBoard(List<List<Cell>> cellList)
-        {
-            //int rowNumber;
-            //int columnNumber;
-            //foreach (TextBox c in this.table.Controls)
-            //{
-            //    rowNumber = this.table.GetRow(c);
-            //    columnNumber = this.table.GetColumn(c);
-            //    if (!cellList[rowNumber][columnNumber].Border)
-            //    {
-            //        c.Text = "";
-            //        if (cellList[rowNumber][columnNumber].Value != -1)
-            //        {
-            //            c.Text = cellList[rowNumber][columnNumber].Value.ToString();
-            //            c.BackColor = Color.LightGreen;
-            //            c.Font = new Font("Arial", 24);
-            //            c.TextAlign = HorizontalAlignment.Center;
-            //        }
-            //        else
-            //        {
-            //            c.BackColor = Color.LightBlue;
-            //            c.Font = new Font(Font.OriginalFontName, 9, FontStyle.Bold);
-            //            c.TextAlign = HorizontalAlignment.Right;
-            //            for (int i = 1; i < 10; i++)
-            //            {
-            //                if (cellList[rowNumber][columnNumber].PossibleNumbers.Contains(i))
-            //                {
-            //                    c.Text += i.ToString() + "  ";
-            //                }
-            //                else
-            //                {
-            //                    c.Text += "     ";
-            //                }
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        c.BackColor = Color.Gray;
-            //    }
-            //}
-        }
         private bool IsBoardValid(List<List<Cell>> cellList)
         {
             List<int> values = new List<int>();
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
-
-
                     if (!cellList[rowNumber][columnNumber].Border)
                     {
                         if (cellList[rowNumber][columnNumber].Value == 0 || cellList[rowNumber][columnNumber].Value == -1)
@@ -443,8 +505,7 @@ namespace KakuroSolver.Helpers
             }
             return true;
         }
-
-        public List<List<int>> GetAllCombinations(List<int> allPossibleNumbers, int arrayLength, int arraySum)
+        public static List<List<int>> GetAllCombinations(List<int> allPossibleNumbers, int arrayLength, int arraySum)
         {
             var allPossibleSolutions = new List<List<int>>();
             var possibleSolutions = new List<List<int>>();
@@ -508,9 +569,9 @@ namespace KakuroSolver.Helpers
         }
         private void FindAllPossibleNumbers(List<List<Cell>> cellList)
         {
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     try
                     {
@@ -537,9 +598,9 @@ namespace KakuroSolver.Helpers
         }
         private void CheckMaxMinSums(List<List<Cell>> cellList)
         {
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+            for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     var numbersToRemove = new List<int>();
                     if (!cellList[rowNumber][columnNumber].Border && !cellList[rowNumber][columnNumber].Locked && !cellList[rowNumber][columnNumber].Iterated)
@@ -602,6 +663,8 @@ namespace KakuroSolver.Helpers
         }
         private void FindPossibleNumbers(List<List<Cell>> cellList)
         {
+            int rowNumber;
+            int columnNumber;
             var restrictedHorizontalNumbers = new List<int>();
             var restrictedVerticalNumbers = new List<int>();
             List<int> virtualPossibleHorizontalNumbers = new List<int>();
@@ -611,11 +674,10 @@ namespace KakuroSolver.Helpers
             List<int> numbersToRemove = new List<int>();
             int horizontalCounter = 1;
             int verticalCounter = 1;
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)      //Remove certain (100%) value from other possible numbers in that row / column
+            for (columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
-
                     try
                     {
                         if (!cellList[rowNumber][columnNumber].Border && !cellList[rowNumber][columnNumber].Locked)
@@ -767,9 +829,9 @@ namespace KakuroSolver.Helpers
                     Iterate(cellList);
                 }
             }
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)     //removing numbers from possible numbers
+            for (columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     try
                     {
@@ -857,11 +919,11 @@ namespace KakuroSolver.Helpers
             //allVirtualPossibleHorizontalNumbers.Clear();
             //allVirtualPossibleVerticalNumbers.Clear();
             //numbersToRemove.Clear();
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)     //removing numbers from possible numbers    OP FUNCTION
-            {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
-                {
 
+            for (columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+            {
+                for (rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
+                {
                     try
                     {
                         if (!cellList[rowNumber][columnNumber].Locked && !cellList[rowNumber][columnNumber].Border && cellList[rowNumber][columnNumber].VirtualVerticalLength == 1)
@@ -1010,7 +1072,6 @@ namespace KakuroSolver.Helpers
                     }
                     catch (Exception)
                     {
-
                         return;
                     }
                     ListToValue(cellList);
@@ -1018,11 +1079,10 @@ namespace KakuroSolver.Helpers
 
                 }
             }
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)      //removing numbers from possible numbers if same possible numbers exist in multiple cells
+            for (columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
-
                     horizontalCounter = 1;
                     verticalCounter = 1;
                     if (!cellList[rowNumber][columnNumber].Locked)
@@ -1162,7 +1222,6 @@ namespace KakuroSolver.Helpers
                         }
                         catch (Exception)
                         {
-
                             return;
                         }
                         ListToValue(cellList);
@@ -1171,9 +1230,9 @@ namespace KakuroSolver.Helpers
 
                 }
             }
-            for (int rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)       //Remove certain (100%) value from other possible numbers in that row / column
+            for (columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
             {
-                for (int columnNumber = 0; columnNumber < nColsGlobal; columnNumber++)
+                for (rowNumber = 0; rowNumber < nRowsGlobal; rowNumber++)
                 {
                     try
                     {
@@ -1309,51 +1368,36 @@ namespace KakuroSolver.Helpers
                 }
             }
         }
-        private void ClearFields()
-        {
-            //foreach (Control c in this.table.Controls)
-            //{
-            //    if (!c.Text.Contains("\\"))
-            //    {
-            //        c.Text = "";
-            //        c.BackColor = Color.LightBlue;
-            //    }
-            //    else
-            //    {
-            //        c.Text = "\\";
-            //    }
-            //}
-        }
         private void RemoveFromCertainNumbers(List<List<Cell>> cellList, int rowNumber, int columnNumber, int value)
         {
-            //for (int i = columnNumber + 1; i < nColsGlobal && !cellList[rowNumber][i].Border; i++)
-            //{
-            //    if (!cellList[rowNumber][i].Locked && cellList[rowNumber][i].CertainNumbersInRow.Contains(value))
-            //    {
-            //        cellList[rowNumber][i].CertainNumbersInRow.Remove(value);
-            //    }
-            //}
-            //for (int i = columnNumber - 1; i > 0 && !cellList[rowNumber][i].Border; i--)
-            //{
-            //    if (!cellList[rowNumber][i].Locked && cellList[rowNumber][i].CertainNumbersInRow.Contains(value))
-            //    {
-            //        cellList[rowNumber][i].CertainNumbersInRow.Remove(value);
-            //    }
-            //}
-            //for (int j = rowNumber + 1; j < nRowsGlobal && !cellList[j][columnNumber].Border; j++)
-            //{
-            //    if (!cellList[j][columnNumber].Locked && cellList[j][columnNumber].CertainNumbersInColumn.Contains(value))
-            //    {
-            //        cellList[j][columnNumber].CertainNumbersInColumn.Remove(value);
-            //    }
-            //}
-            //for (int j = rowNumber - 1; j > 0 && !cellList[j][columnNumber].Border; j--)
-            //{
-            //    if (!cellList[j][columnNumber].Locked && cellList[j][columnNumber].CertainNumbersInColumn.Contains(value))
-            //    {
-            //        cellList[j][columnNumber].CertainNumbersInColumn.Remove(value);
-            //    }
-            //}
+            for (int i = columnNumber + 1; i < nColsGlobal && !cellList[rowNumber][i].Border; i++)
+            {
+                if (!cellList[rowNumber][i].Locked && cellList[rowNumber][i].CertainNumbersInRow.Contains(value))
+                {
+                    cellList[rowNumber][i].CertainNumbersInRow.Remove(value);
+                }
+            }
+            for (int i = columnNumber - 1; i > 0 && !cellList[rowNumber][i].Border; i--)
+            {
+                if (!cellList[rowNumber][i].Locked && cellList[rowNumber][i].CertainNumbersInRow.Contains(value))
+                {
+                    cellList[rowNumber][i].CertainNumbersInRow.Remove(value);
+                }
+            }
+            for (int j = rowNumber + 1; j < nRowsGlobal && !cellList[j][columnNumber].Border; j++)
+            {
+                if (!cellList[j][columnNumber].Locked && cellList[j][columnNumber].CertainNumbersInColumn.Contains(value))
+                {
+                    cellList[j][columnNumber].CertainNumbersInColumn.Remove(value);
+                }
+            }
+            for (int j = rowNumber - 1; j > 0 && !cellList[j][columnNumber].Border; j--)
+            {
+                if (!cellList[j][columnNumber].Locked && cellList[j][columnNumber].CertainNumbersInColumn.Contains(value))
+                {
+                    cellList[j][columnNumber].CertainNumbersInColumn.Remove(value);
+                }
+            }
         }
 
         List<List<int>> maxSumNumbers = new List<List<int>>() {
@@ -1382,6 +1426,5 @@ namespace KakuroSolver.Helpers
         };
         List<int> maxSums = new List<int>() { 0, 9, 17, 24, 30, 35, 39, 42, 44, 45 };
         List<int> minSums = new List<int>() { 0, 1, 3, 6, 10, 15, 21, 28, 36, 45 };
-
     }
 }

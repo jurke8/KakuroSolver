@@ -114,9 +114,19 @@
                                         }
                                         else
                                         {
-                                            <td style="border:5px solid white;background:#dfdfdf">
-                                                <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:#dfdfdf;width:100%;border:#dfdfdf;text-align:center;font-weight:bold;height:100%;font-size: large;color:black" type="text" name="values" value="@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).Value">
-                                            </td>
+                                            if ("-1".Equals(@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).Value))
+                                            {
+                                                <td style="border:5px solid white;background:#dfdfdf">
+                                                    <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:#dfdfdf;width:100%;border:#dfdfdf;text-align:center;font-weight:bold;height:100%;font-size: large;color:black" type="text" name="values" value="">
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td style="border:5px solid white;background:#dfdfdf">
+                                                    <input oninput="changed(this)" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode ==92' style="background-color:#dfdfdf;width:100%;border:#dfdfdf;text-align:center;font-weight:bold;height:100%;font-size: large;color:black" type="text" name="values" value="@Model.PictureCells.ElementAt(i * Model.KakuroRead.NumberOfColumns + j).Value">
+                                                </td>
+                                            }
+
                                         }
 
                                     }
@@ -155,7 +165,7 @@
         }
         else {
             selectInput.style.backgroundColor = "#dfdfdf";
-            selectInput.style.color = "black"; 
+            selectInput.style.color = "black";
             selectInput.style.fontWeight = "bold";
         }
     }

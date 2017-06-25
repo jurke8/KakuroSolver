@@ -143,7 +143,7 @@ namespace KakuroSolver.Controllers
             {
                 return View("Index");
             }
-            model.KakuroHelper.Combinations = new Algorithm().GetAllCombinations(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, model.KakuroHelper.NumberOfFields, model.KakuroHelper.Sum);
+            model.KakuroHelper.Combinations = Algorithm.GetAllCombinations(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, model.KakuroHelper.NumberOfFields, model.KakuroHelper.Sum);
             return View("Index", model);
         }
         public ActionResult ChangeLanguage(string language, string returnUrl)
@@ -185,20 +185,30 @@ namespace KakuroSolver.Controllers
                 };
                 cells.Add(cell);
             }
+            var statistic = new StatisticsModel();
+
             if (totalVerticalSum != totalHorizontalSum)
             {
                 ModelState.AddModelError(string.Empty, Resources.Localization.WrongEntry);
                 if (kakuroid == null)
                 {
-                    var model2 = new KakuroModel() { PictureCells = cells, KakuroRead = new KakuroReadModel() { NumberOfColumns = columns, NumberOfRows = rows }, Solved = true };
-                    return View("Index", model2);
+                    using (var db = new ApplicationDbContext())
+                    {
+                        statistic = new StatisticsModel()
+                        {
+                            KakuroStatistics = db.KakuroStatistics.ToList()
+                        };
+                        var model2 = new KakuroModel() { PictureCells = cells, KakuroRead = new KakuroReadModel() { NumberOfColumns = columns, NumberOfRows = rows }, Solved = true, StatisticsModel = statistic };
+                        return View("Index", model2);
+                    }
                 }
                 else
                 {
                     using (var db = new ApplicationDbContext())
                     {
                         var kakuroStat = db.KakuroStatistics.Where(ks => ks.Id == kakuroid).FirstOrDefault();
-                        var model2 = new KakuroModel() { PictureCells = cells, KakuroRead = new KakuroReadModel() { NumberOfColumns = columns, NumberOfRows = rows }, Solved = true, KakuroStatistic = kakuroStat };
+
+                        var model2 = new KakuroModel() { PictureCells = cells, KakuroRead = new KakuroReadModel() { NumberOfColumns = columns, NumberOfRows = rows }, Solved = true, KakuroStatistic = kakuroStat, StatisticsModel = statistic };
                         return View("Index", model2);
                     }
                 }
@@ -228,7 +238,6 @@ namespace KakuroSolver.Controllers
                     break;
                 }
             }
-            var statistic = new StatisticsModel();
             var kakuro = new KakuroStatistic();
             using (var db = new ApplicationDbContext())
             {
