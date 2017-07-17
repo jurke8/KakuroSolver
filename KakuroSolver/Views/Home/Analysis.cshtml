@@ -1,13 +1,11 @@
 ﻿@model KakuroSolver.Models.KakuroModel
 <!-- Statistics Section -->
-<section id="statistics" class="container content-section text-center">
+<section id="analysis" class="container content-section text-center" style="min-height:100% !important">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2 style="margin-bottom:80px">@Resources.Localization.Statistics</h2>
+            <h2 style="margin-bottom:80px">@Resources.Localization.Analysis</h2>
         </div>
     </div>
-    @*Ukupno: @Model.StatisticsModel.KakuroNumber
-    Rješeno: @Model.StatisticsModel.SolvedKakuros*@
     <div class='content' style="display:inline-flex">
         <div class='load' style="margin-right:20px">
             <h4 style="margin:0 0 0 0 ">@Resources.Localization.Loading</h4>
@@ -15,9 +13,8 @@
         <div class='solve'>
             <h4 style="margin:0 0 0 0 ">@Resources.Localization.Solving</h4>
         </div>
-        <!-- /the chart goes here -->
     </div>
-    <br /><br /><br /><br /><br /><br /><br />
+    @*<br /><br /><br /><br /><br /><br /><br />*@
 </section>
 <script>
     $(document).ready(function()

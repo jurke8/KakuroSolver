@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KakuroSolver", "KakuroSolver\KakuroSolver.csproj", "{C16708EC-5C4E-4E93-ACE9-7A8106F96585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KakuroSolver.Tests", "KakuroSolver.Tests\KakuroSolver.Tests.csproj", "{DC945452-101B-4F29-BAC5-05C70E20C05C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{C16708EC-5C4E-4E93-ACE9-7A8106F96585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16708EC-5C4E-4E93-ACE9-7A8106F96585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16708EC-5C4E-4E93-ACE9-7A8106F96585}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC945452-101B-4F29-BAC5-05C70E20C05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC945452-101B-4F29-BAC5-05C70E20C05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC945452-101B-4F29-BAC5-05C70E20C05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC945452-101B-4F29-BAC5-05C70E20C05C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

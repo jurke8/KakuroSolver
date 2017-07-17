@@ -1,13 +1,12 @@
 ﻿@model KakuroSolver.Models.KakuroModel
 <!-- Helper Section -->
-<section id="helper" name="helper" class="container content-section text-center">
+<section id="helper" name="helper" class="container content-section text-center" style="min-height:100% !important">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>@Resources.Localization.Helper</h2>
             @using (Html.BeginForm("Helper", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
-
                 <div class="form-horizontal">
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -30,7 +29,6 @@
                             <input type="submit" value="@Resources.Localization.FindCombinationsButton" class="btn btn-lg btn-default btn-success" style="float:left" />
                         </div>
                     </div>
-
                 </div>
             }
             @if (Model != null && Model.KakuroHelper != null && Model.KakuroHelper.Combinations.Count() > 0)
@@ -41,14 +39,12 @@
                         @foreach (var combination in Model.KakuroHelper.Combinations)
                         {
                             <li>
-                                @String.Join(", ", combination.ToArray())
+                                @String.Join(" + ", combination.ToArray())
                             </li>
                         }
                     </ul>
                 </div>
             }
-
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </section>

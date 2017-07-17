@@ -7,7 +7,6 @@ using System.Web;
 namespace KakuroSolver.Models.DBModels
 {
     public class ApplicationDbContext : DbContext
-
     {
         public DbSet<KakuroStatistic> KakuroStatistics { get; set; }
 
@@ -17,8 +16,6 @@ namespace KakuroSolver.Models.DBModels
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-
         }
     }
 }

@@ -20,3 +20,9 @@ a.language {
 .form-numbers {
 width:15% !important;
 }
+.invertcolors {
+
+color:black !important;
+background-color:white !important;
+
+}

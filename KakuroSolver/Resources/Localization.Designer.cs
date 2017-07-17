@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analysis.
+        /// </summary>
+        public static string Analysis {
+            get {
+                return ResourceManager.GetString("Analysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kakuro solver.
         /// </summary>
         public static string ApplicationName {
@@ -291,15 +300,6 @@ namespace Resources {
         public static string Solving {
             get {
                 return ResourceManager.GetString("Solving", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Statistics.
-        /// </summary>
-        public static string Statistics {
-            get {
-                return ResourceManager.GetString("Statistics", resourceCulture);
             }
         }
         

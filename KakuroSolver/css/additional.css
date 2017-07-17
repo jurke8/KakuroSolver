@@ -22,3 +22,9 @@
   height: 28px;
   pointer-events: none;
 }
+.invertcolors {
+
+color:black !important;
+background-color:white !important;
+
+}

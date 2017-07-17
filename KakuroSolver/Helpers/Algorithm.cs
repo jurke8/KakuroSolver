@@ -518,21 +518,21 @@ namespace KakuroSolver.Helpers
                     var binaryNumber = 1 << j;
                     if ((number & binaryNumber) == binaryNumber) { nestedList.Add(allPossibleNumbers[j]); }
                 }
-                allPossibleSolutions.Add(nestedList);
+                if (nestedList.Count() == arrayLength)
+                {
+                    allPossibleSolutions.Add(nestedList);
+                }
             }
             foreach (List<int> possibleNumbers in allPossibleSolutions)
             {
-                if (arrayLength == possibleNumbers.Count())
+                int currentSum = 0;
+                foreach (int number in possibleNumbers)
                 {
-                    int currentSum = 0;
-                    foreach (int number in possibleNumbers)
-                    {
-                        currentSum += number;
-                    }
-                    if (currentSum == arraySum)
-                    {
-                        possibleSolutions.Add(possibleNumbers);
-                    }
+                    currentSum += number;
+                }
+                if (currentSum == arraySum)
+                {
+                    possibleSolutions.Add(possibleNumbers);
                 }
             }
             return possibleSolutions;

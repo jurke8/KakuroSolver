@@ -388,3 +388,9 @@ a.language {
     margin-top:10px !important;
     margin-left: 5px !important;
 }
+.invertcolors {
+
+color:black !important;
+background-color:white !important;
+
+}

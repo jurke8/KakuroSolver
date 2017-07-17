@@ -56,6 +56,34 @@ namespace KakuroSolver.Controllers
             @ViewBag.Position = "helper";
             return View("Index", model);
         }
+        public ActionResult SolveKakuro()
+        {
+            var model = new KakuroModel();
+
+            using (var db = new ApplicationDbContext())
+            {
+                model.StatisticsModel = new StatisticsModel()
+                {
+                    KakuroStatistics = db.KakuroStatistics.ToList()
+                };
+            };
+            @ViewBag.Position = "solver";
+            return View("Index", model);
+        }
+        public ActionResult LoadKakuro()
+        {
+            var model = new KakuroModel();
+
+            using (var db = new ApplicationDbContext())
+            {
+                model.StatisticsModel = new StatisticsModel()
+                {
+                    KakuroStatistics = db.KakuroStatistics.ToList()
+                };
+            };
+            @ViewBag.Position = "solver";
+            return View("Index", model);
+        }
         [HttpPost]
         public ActionResult LoadKakuro(KakuroModel model)
         {
@@ -141,16 +169,20 @@ namespace KakuroSolver.Controllers
             };
             if (!ModelState.IsValid)
             {
-                return View("Index");
+                model.KakuroHelper.Combinations = new List<List<int>>();
+                return View("Index", model);
             }
             model.KakuroHelper.Combinations = Algorithm.GetAllCombinations(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, model.KakuroHelper.NumberOfFields, model.KakuroHelper.Sum);
             return View("Index", model);
         }
+
+
         public ActionResult ChangeLanguage(string language, string returnUrl)
         {
             Session["Culture"] = new CultureInfo(language);
             return Redirect(returnUrl);
         }
+
         [HttpPost]
         public ActionResult SolveKakuro(int columns, int rows, List<string> values, Guid? kakuroid)
         {
@@ -207,18 +239,24 @@ namespace KakuroSolver.Controllers
                     using (var db = new ApplicationDbContext())
                     {
                         var kakuroStat = db.KakuroStatistics.Where(ks => ks.Id == kakuroid).FirstOrDefault();
-
+                        statistic = new StatisticsModel()
+                        {
+                            KakuroStatistics = db.KakuroStatistics.ToList()
+                        };
                         var model2 = new KakuroModel() { PictureCells = cells, KakuroRead = new KakuroReadModel() { NumberOfColumns = columns, NumberOfRows = rows }, Solved = true, KakuroStatistic = kakuroStat, StatisticsModel = statistic };
                         return View("Index", model2);
                     }
                 }
             }
             //DO WORK
+
             var algorithm = new Algorithm();
             var watch = System.Diagnostics.Stopwatch.StartNew();
             var resultsCells = algorithm.GetResult(cells, rows, columns);
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+
+
             var solved = true;
 
             //Check is solved

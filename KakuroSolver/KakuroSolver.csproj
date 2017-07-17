@@ -308,13 +308,10 @@
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Home\Navigation.cshtml" />
     <Content Include="Views\Home\Intro.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Download.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
     <Content Include="Views\Home\Solver.cshtml" />
     <Content Include="Views\Home\Helper.cshtml" />
-    <Content Include="Views\Home\Statistics.cshtml" />
+    <Content Include="Views\Home\Analysis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

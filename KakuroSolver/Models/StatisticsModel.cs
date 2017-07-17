@@ -36,3 +36,4 @@ namespace KakuroSolver.Models
         }
     }
 }
+

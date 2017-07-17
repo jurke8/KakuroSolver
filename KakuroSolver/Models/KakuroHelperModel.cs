@@ -23,3 +23,4 @@ namespace KakuroSolver.Models
         public List<List<int>> Combinations { get; set; }
     }
 }
+

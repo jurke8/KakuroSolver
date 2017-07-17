@@ -16,7 +16,6 @@ namespace KakuroSolver.Models
         public List<PictureCell> PictureCells { get; set; }
         public KakuroStatistic KakuroStatistic { get; set; }
         public StatisticsModel StatisticsModel { get; set; }
-
         public bool Solved { get; set; }
     }
 }
